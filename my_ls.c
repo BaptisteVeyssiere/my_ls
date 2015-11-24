@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Mon Nov 23 10:43:56 2015 Baptiste veyssiere
-** Last update Tue Nov 24 23:31:31 2015 Baptiste veyssiere
+** Last update Tue Nov 24 23:32:54 2015 Baptiste veyssiere
 */
 
 #include <sys/types.h>
@@ -103,7 +103,6 @@ void		main(int ac, char **av)
   while ((pathname = readdir(dir)) != NULL)
     my_ls(pathname, &list);
   my_sort_alpha(&list);
-  my_show_list(list);
   flags_and_home_gestion(ac, av, flags, &directory);
   closedir(dir);
 }

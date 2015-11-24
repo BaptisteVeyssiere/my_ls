@@ -5,13 +5,15 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Tue Nov 24 14:15:57 2015 Baptiste veyssiere
-** Last update Tue Nov 24 22:10:19 2015 Baptiste veyssiere
+** Last update Tue Nov 24 23:49:37 2015 Baptiste veyssiere
 */
 
 #include <stdlib.h>
 #include "file_struct.h"
 #include <sys/types.h>
 #include <dirent.h>
+#include <sys/stat.h>
+#include <unistd.h>
 
 int	fill_flag(char *flags, char letter, int *key)
 {
@@ -60,11 +62,23 @@ int	if_flags(int *key, char *str, char *flags, int i)
 int	if_direct_or_file(int *key, char *str, t_directory **directory)
 {
   t_directory	*elem;
+  char		*buffer;
+  struct stat   buf;
 
   if (opendir(str) == NULL)
     {
-      write(2, "Invalid directory\n", 18);
-      exit(1);
+      if (stat(str, &buf) == -1)
+	{
+	  write(2, "Invalid file or directory\n", 26);
+	  exit(1);
+	}
+      else
+	{
+	  elem = malloc(sizeof(*elem));
+	  elem->file = str;
+	  elem->next = *directory;
+	  *directory = elem;
+	}
     }
   else
     {
