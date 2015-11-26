@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Mon Nov 23 15:25:25 2015 Baptiste veyssiere
-** Last update Thu Nov 26 15:09:26 2015 Baptiste veyssiere
+** Last update Thu Nov 26 18:01:36 2015 Baptiste veyssiere
 */
 
 #ifndef FILE_STRUCT_H
@@ -21,6 +21,7 @@ typedef struct s_file
   char  *group_name;
   char  *file_name;
   int	block;
+  int	time;
   struct s_file	*next;
 } t_file;
 

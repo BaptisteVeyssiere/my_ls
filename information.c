@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Wed Nov 25 15:37:16 2015 Baptiste veyssiere
-** Last update Thu Nov 26 16:58:09 2015 Baptiste veyssiere
+** Last update Thu Nov 26 17:38:50 2015 Baptiste veyssiere
 */
 
 #include <stdlib.h>
@@ -36,6 +36,7 @@ void		get_file(char *str, t_file **list)
   date(file, buf);
   file->file_name = str;
   file->block = buf.st_blocks;
+  file->time = buf.st_mtime;
   file->next = *list;
   *list = file;
 }
@@ -60,6 +61,7 @@ void            get_file_directory(char *str, t_file **list, char *name)
   file->file_name = malloc(my_strlen(name));
   my_strcpy(file->file_name, name);
   file->block = buf.st_blocks;
+  file->time = buf.st_mtime;
   file->next = *list;
   *list = file;
 }

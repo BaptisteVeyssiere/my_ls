@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Tue Nov 24 14:15:57 2015 Baptiste veyssiere
-** Last update Tue Nov 24 23:52:20 2015 Baptiste veyssiere
+** Last update Thu Nov 26 18:15:34 2015 Baptiste veyssiere
 */
 
 #include <stdlib.h>
@@ -59,7 +59,7 @@ int	if_flags(int *key, char *str, char *flags, int i)
   if_flags(key, str, flags, i);
 }
 
-int		if_direct_or_file(int *key, char *str, t_directory **directory)
+int		if_direct_or_file(int *key, char *str, t_directory **directory, char *flags)
 {
   t_directory	*elem;
   char		*buffer;
@@ -69,8 +69,10 @@ int		if_direct_or_file(int *key, char *str, t_directory **directory)
     {
       if (stat(str, &buf) == -1)
 	{
-	  write(2, "Invalid file or directory\n", 26);
-	  exit(1);
+	  write(2, "ls: cannot access ", 18);
+	  write(2, str, my_strlen(str));
+	  write(2, ": No such file or directory\n", 28);
+	  flags[5] = '0';
 	}
       else
 	{
@@ -102,7 +104,7 @@ int		flags_and_home_gestion(int ac, char **av, char *flags, t_directory **direct
       if (av[i][0] == '-')
 	if_flags(&key, av[i], flags, 1);
       else
-	if_direct_or_file(&key, av[i], directory);
+	if_direct_or_file(&key, av[i], directory, flags);
       i++;
     }
 }

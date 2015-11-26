@@ -5,13 +5,13 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Thu Nov 26 16:31:22 2015 Baptiste veyssiere
-** Last update Thu Nov 26 17:32:09 2015 Baptiste veyssiere
+** Last update Thu Nov 26 19:04:54 2015 Baptiste veyssiere
 */
 
 #include <stdlib.h>
 #include "file_struct.h"
 
-void    case_file(t_directory *directory)
+void    case_file(t_directory *directory, char *flag)
 {
   t_file        *file;
   int           key;
@@ -26,13 +26,16 @@ void    case_file(t_directory *directory)
         key = 1;
       directory = directory->next;
     }
-  my_sort_alpha(&file);
-  my_show_name(file);
-  if (key == 1)
-    my_putstr("\n");
+  if (file != NULL)
+    {
+      my_sort_alpha(&file);
+      my_show_hidden_name(file);
+      if (key == 1)
+	my_putstr("\n");
+    }
 }
 
-void    case_adress(t_directory *directory, t_file **list)
+void    case_adress(t_directory *directory, t_file **list, char *flag)
 {
   t_file        *file;
 
@@ -64,16 +67,16 @@ void	case_no_flags(char *flag, t_file **list, t_directory *directory)
 {
   t_length	*length;
 
-  if (directory == NULL)
+  if (directory == NULL && flag[5] != '0')
     {
       get_directory(".", list);
       my_sort_alpha(list);
       my_show_name(*list);
     }
-  else
+  else if (directory != NULL)
     {
-      case_file(directory);
-      case_adress(directory, list);
+      case_file(directory, flag);
+      case_adress(directory, list, flag);
     }
   exit(0);
 }

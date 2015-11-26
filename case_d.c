@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Wed Nov 25 14:14:55 2015 Baptiste veyssiere
-** Last update Thu Nov 26 16:29:54 2015 Baptiste veyssiere
+** Last update Thu Nov 26 19:20:22 2015 Baptiste veyssiere
 */
 
 #include "file_struct.h"
@@ -88,9 +88,9 @@ int	case_d(char *flags, t_directory **directory, t_file **list)
 	}
       i++;
     }
-  if (*directory == NULL)
+  if (*directory == NULL && flags[5] != '0')
     my_putstr(".\n");
-  else
+  else if (*directory != NULL)
     {
       while (*directory != NULL)
 	{
@@ -98,7 +98,7 @@ int	case_d(char *flags, t_directory **directory, t_file **list)
 	  *directory = (*directory)->next;
 	}
       my_sort_alpha(list);
-      my_show_name(*list);
+      my_show_hidden_name(*list);
     }
   exit(0);
 }

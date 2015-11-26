@@ -5,14 +5,14 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Wed Nov 25 16:30:41 2015 Baptiste veyssiere
-** Last update Thu Nov 26 16:21:59 2015 Baptiste veyssiere
+** Last update Thu Nov 26 19:05:32 2015 Baptiste veyssiere
 */
 
 #include "file_struct.h"
 #include <unistd.h>
 #include <stdlib.h>
 
-void	case_l_file(t_directory *directory)
+void	case_l_file(t_directory *directory, char *flag)
 {
   t_length	*length;
   t_file	*file;
@@ -31,7 +31,7 @@ void	case_l_file(t_directory *directory)
   my_sort_alpha(&file);
   length = malloc(sizeof(*length));
   get_the_lengths(file, length);
-  my_show_list(file, length);
+  my_show_hidden_list(file, length);
   if (key == 1)
     my_putstr("\n");
 }
@@ -47,7 +47,7 @@ void	add_adress(t_file **file, char *str)
   *file = elem;
 }
 
-void	case_l_adress(t_directory *directory, t_file **list)
+void	case_l_adress(t_directory *directory, t_file **list, char *flag)
 {
   t_file	*length;
   t_file	*file;
@@ -85,7 +85,7 @@ int	case_l(char *flags, t_directory **directory, t_file **list)
 {
   t_length	*length;
 
-  if (*directory == NULL)
+  if (*directory == NULL && flags[5] != '0')
     {
       get_directory(".", list);
       my_sort_alpha(list);
@@ -98,8 +98,8 @@ int	case_l(char *flags, t_directory **directory, t_file **list)
     }
   else
     {
-      case_l_file(*directory);
-      case_l_adress(*directory, list);
+      case_l_file(*directory, flags);
+      case_l_adress(*directory, list, flags);
     }
   exit (0);
 }

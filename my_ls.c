@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Mon Nov 23 10:43:56 2015 Baptiste veyssiere
-** Last update Thu Nov 26 09:59:37 2015 Baptiste veyssiere
+** Last update Thu Nov 26 18:12:58 2015 Baptiste veyssiere
 */
 
 #include <unistd.h>
@@ -18,7 +18,7 @@ void		main(int ac, char **av)
   char          *flags;
   t_directory   *directory;
 
-  flags = malloc(6);
+  flags = malloc(7);
   directory = NULL;
   flags_and_home_gestion(ac, av, flags, &directory);
   displayer(flags, &directory);
