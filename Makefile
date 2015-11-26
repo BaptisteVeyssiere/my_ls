@@ -5,7 +5,7 @@
 ## Login   <VEYSSI_B@epitech.net>
 ##
 ## Started on  Mon Nov 23 10:38:43 2015 Baptiste veyssiere
-## Last update Thu Nov 26 01:32:35 2015 Baptiste veyssiere
+## Last update Thu Nov 26 02:32:07 2015 Baptiste veyssiere
 ##
 
 NAME	= my_ls
@@ -19,8 +19,10 @@ SRCS	= my_ls.c \
 	my_put_nbr.c \
 	my_revstr.c \
 	case_d.c \
+	case_l.c \
 	information.c \
-	displayer.c
+	displayer.c \
+	get_data.c
 
 OBJS	= $(SRCS:.c=.o)
 

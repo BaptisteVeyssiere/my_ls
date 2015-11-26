@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Wed Nov 25 14:14:55 2015 Baptiste veyssiere
-** Last update Thu Nov 26 02:12:50 2015 Baptiste veyssiere
+** Last update Thu Nov 26 10:29:16 2015 Baptiste veyssiere
 */
 
 #include "file_struct.h"
@@ -35,10 +35,13 @@ void	file(t_file **list, t_directory *directory)
 void	case_ld(char *flags, t_directory **directory, t_file **list)
 {
   t_length	*length;
+
   if (*directory == NULL)
     {
       get_file(".", list);
-      my_show_list(*list);
+      length = malloc(sizeof(*length));
+      get_the_lengths(*list, length);
+      my_show_list(*list, length);
     }
   else
     {
