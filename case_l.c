@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Wed Nov 25 16:30:41 2015 Baptiste veyssiere
-** Last update Thu Nov 26 19:05:32 2015 Baptiste veyssiere
+** Last update Thu Nov 26 19:39:13 2015 Baptiste veyssiere
 */
 
 #include "file_struct.h"
@@ -28,12 +28,15 @@ void	case_l_file(t_directory *directory, char *flag)
 	key = 1;
       directory = directory->next;
     }
-  my_sort_alpha(&file);
-  length = malloc(sizeof(*length));
-  get_the_lengths(file, length);
-  my_show_hidden_list(file, length);
-  if (key == 1)
-    my_putstr("\n");
+  if (file != NULL)
+    {
+      my_sort_alpha(&file);
+      length = malloc(sizeof(*length));
+      get_the_lengths(file, length);
+      my_show_hidden_list(file, length);
+      if (key == 1)
+	my_putstr("\n");
+    }
 }
 
 void	add_adress(t_file **file, char *str)

@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Thu Nov 26 16:31:22 2015 Baptiste veyssiere
-** Last update Thu Nov 26 19:04:54 2015 Baptiste veyssiere
+** Last update Thu Nov 26 19:33:54 2015 Baptiste veyssiere
 */
 
 #include <stdlib.h>
@@ -71,6 +71,7 @@ void	case_no_flags(char *flag, t_file **list, t_directory *directory)
     {
       get_directory(".", list);
       my_sort_alpha(list);
+      case_r(flag, list);
       my_show_name(*list);
     }
   else if (directory != NULL)
