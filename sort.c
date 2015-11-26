@@ -5,11 +5,32 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Tue Nov 24 17:43:25 2015 Baptiste veyssiere
-** Last update Tue Nov 24 23:29:59 2015 Baptiste veyssiere
+** Last update Wed Nov 25 15:05:09 2015 Baptiste veyssiere
 */
 
 #include "file_struct.h"
+#include "prototypes.h"
 #include <unistd.h>
+#include <stdlib.h>
+
+#include <stdio.h>
+
+void	get_the_lengths(t_file *list, t_length *lengths)
+{
+  lengths->hardlink = my_strlen(my_put_nbr(list->hardlink));
+  lengths->size = my_strlen(my_put_nbr(list->size));
+  lengths->user = my_strlen(list->user_name);
+  lengths->group = my_strlen(list->group_name);
+  list = list->next;
+  while (list != NULL)
+    {
+      lengths->hardlink = LENGTH(lengths->hardlink, my_strlen(my_put_nbr(list->hardlink)));
+      lengths->size = LENGTH(lengths->size, my_strlen(my_put_nbr(list->size)));
+      lengths->user = LENGTH(lengths->user, my_strlen(list->user_name));
+      lengths->group = LENGTH(lengths->group, my_strlen(list->group_name));
+      list = list->next;
+    }
+}
 
 int     check(t_file *list)
 {

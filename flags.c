@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Tue Nov 24 14:15:57 2015 Baptiste veyssiere
-** Last update Tue Nov 24 23:49:37 2015 Baptiste veyssiere
+** Last update Tue Nov 24 23:52:20 2015 Baptiste veyssiere
 */
 
 #include <stdlib.h>
@@ -59,7 +59,7 @@ int	if_flags(int *key, char *str, char *flags, int i)
   if_flags(key, str, flags, i);
 }
 
-int	if_direct_or_file(int *key, char *str, t_directory **directory)
+int		if_direct_or_file(int *key, char *str, t_directory **directory)
 {
   t_directory	*elem;
   char		*buffer;

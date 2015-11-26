@@ -5,7 +5,7 @@
 ## Login   <VEYSSI_B@epitech.net>
 ##
 ## Started on  Mon Nov 23 10:38:43 2015 Baptiste veyssiere
-## Last update Tue Nov 24 17:52:30 2015 Baptiste veyssiere
+## Last update Thu Nov 26 01:32:35 2015 Baptiste veyssiere
 ##
 
 NAME	= my_ls
@@ -15,7 +15,12 @@ SRCS	= my_ls.c \
 	my_strlen.c \
 	my_put.c \
 	flags.c \
-	sort.c
+	sort.c \
+	my_put_nbr.c \
+	my_revstr.c \
+	case_d.c \
+	information.c \
+	displayer.c
 
 OBJS	= $(SRCS:.c=.o)
 

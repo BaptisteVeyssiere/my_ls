@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Mon Nov 23 15:25:25 2015 Baptiste veyssiere
-** Last update Tue Nov 24 23:43:52 2015 Baptiste veyssiere
+** Last update Wed Nov 25 14:40:15 2015 Baptiste veyssiere
 */
 
 #ifndef FILE_STRUCT_H
@@ -29,5 +29,13 @@ typedef struct s_directory
   char	*file;
   struct s_directory *next;
 }t_directory;
+
+typedef struct
+{
+  int	hardlink;
+  int	size;
+  int	user;
+  int	group;
+}t_length;
 
 #endif /* !FILE_STRUCT_H */
