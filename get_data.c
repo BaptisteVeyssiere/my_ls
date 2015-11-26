@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Thu Nov 26 02:26:42 2015 Baptiste veyssiere
-** Last update Thu Nov 26 16:05:25 2015 Baptiste veyssiere
+** Last update Thu Nov 26 16:25:24 2015 Baptiste veyssiere
 */
 
 #include "file_struct.h"
@@ -21,9 +21,9 @@ int	total_block(t_file *file)
   int	total;
 
   total = 0;
-  while (file->next->next != NULL)
+  while (file != NULL)
     {
-      if (file->block > 0)
+      if (file->file_name[0] != '.')
 	total += file->block;
       file = file->next;
     }
