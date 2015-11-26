@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Wed Nov 25 15:37:16 2015 Baptiste veyssiere
-** Last update Thu Nov 26 15:48:24 2015 Baptiste veyssiere
+** Last update Thu Nov 26 16:58:09 2015 Baptiste veyssiere
 */
 
 #include <stdlib.h>
@@ -60,7 +60,6 @@ void            get_file_directory(char *str, t_file **list, char *name)
   file->file_name = malloc(my_strlen(name));
   my_strcpy(file->file_name, name);
   file->block = buf.st_blocks;
-  //my_putstr(my_put_nbr(file->block));
   file->next = *list;
   *list = file;
 }
@@ -80,8 +79,6 @@ void		get_directory(char *str, t_file **list)
       assemblage = malloc(my_strlen(str) + my_strlen(name));
       name_assembler(str, name, assemblage);
       get_file_directory(assemblage, list, name);
-      //free(name);
-      //free(assemblage);
     }
   closedir(dir);
 }

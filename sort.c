@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Tue Nov 24 17:43:25 2015 Baptiste veyssiere
-** Last update Wed Nov 25 15:05:09 2015 Baptiste veyssiere
+** Last update Thu Nov 26 17:23:51 2015 Baptiste veyssiere
 */
 
 #include "file_struct.h"
@@ -39,6 +39,10 @@ int     check(t_file *list)
   i = 0;
   while (list->file_name[i] != 0)
     {
+      /*if (list->file_name[i] <= 'Z' && list->file_name[i] >= 'A')
+	if (list->next->file_name[i] <= 'z' && list->next->file_name[i] >= 'a')
+	  if ((list->file_name[i] + 32) > list->next->file_name[i])
+	  return (1);*/
       if (list->file_name[i] > list->next->file_name[i])
 	return (1);
       if (list->file_name[i] < list->next->file_name[i])

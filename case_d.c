@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Wed Nov 25 14:14:55 2015 Baptiste veyssiere
-** Last update Thu Nov 26 10:29:16 2015 Baptiste veyssiere
+** Last update Thu Nov 26 16:29:54 2015 Baptiste veyssiere
 */
 
 #include "file_struct.h"
@@ -41,7 +41,7 @@ void	case_ld(char *flags, t_directory **directory, t_file **list)
       get_file(".", list);
       length = malloc(sizeof(*length));
       get_the_lengths(*list, length);
-      my_show_list(*list, length);
+      my_show_hidden_list(*list, length);
     }
   else
     {
@@ -50,7 +50,7 @@ void	case_ld(char *flags, t_directory **directory, t_file **list)
       length = malloc(sizeof(*length));
       get_the_lengths(*list, length);
       my_sort_alpha(list);
-      my_show_list(*list, length);
+      my_show_hidden_list(*list, length);
       free(length);
     }
 }

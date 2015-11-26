@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Thu Nov 26 01:31:48 2015 Baptiste veyssiere
-** Last update Thu Nov 26 16:19:03 2015 Baptiste veyssiere
+** Last update Thu Nov 26 17:34:09 2015 Baptiste veyssiere
 */
 
 #include <stdlib.h>
@@ -18,6 +18,8 @@ int             displayer(char *flags, t_directory **directory)
 
   i = 0;
   list = NULL;
+  if (flags[0] == 0)
+    case_no_flags(flags, &list, *directory);
   while (flags[i] != 0)
     {
       if (flags[i] == 'd')
@@ -111,15 +113,25 @@ void    my_show_list(t_file *list, t_length *length)
     }
 }
 
-void	my_show_name(t_file *list)
+void	my_show_hidden_name(t_file *list)
 {
   while (list != NULL)
     {
       my_putstr(list->file_name);
-      if (list->next != NULL)
-	my_putstr("  ");
-      else
-	my_putstr("\n");
+      my_putstr("\n");
+      list = list->next;
+    }
+}
+
+void    my_show_name(t_file *list)
+{
+  while (list != NULL)
+    {
+      if (list->file_name[0] != '.')
+	{
+	  my_putstr(list->file_name);
+	  my_putstr("\n");
+	}
       list = list->next;
     }
 }
