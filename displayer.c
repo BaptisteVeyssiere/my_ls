@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Thu Nov 26 01:31:48 2015 Baptiste veyssiere
-** Last update Fri Nov 27 01:06:27 2015 Baptiste veyssiere
+** Last update Fri Nov 27 01:26:09 2015 Baptiste veyssiere
 */
 
 #include <stdlib.h>
@@ -18,8 +18,11 @@ int             displayer(char *flags, t_directory **directory)
 
   i = 0;
   list = NULL;
-  if (flags[0] == 0)
+  while (flags[i] != 0 && flags[i] != 'l' && flags[i] != 'R' && flags[i] != 'd')
+    i++;
+  if (flags[i] == 0)
     case_no_flags(flags, &list, *directory);
+  i = 0;
   while (flags[i] != 0)
     {
       if (flags[i] == 'd')
