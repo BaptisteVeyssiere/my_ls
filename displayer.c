@@ -5,41 +5,13 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Thu Nov 26 01:31:48 2015 Baptiste veyssiere
-** Last update Fri Nov 27 01:26:09 2015 Baptiste veyssiere
+** Last update Fri Nov 27 15:19:53 2015 Baptiste veyssiere
 */
 
 #include <stdlib.h>
 #include "file_struct.h"
 
-int             displayer(char *flags, t_directory **directory)
-{
-  int           i;
-  t_file	*list;
-
-  i = 0;
-  list = NULL;
-  while (flags[i] != 0 && flags[i] != 'l' && flags[i] != 'R' && flags[i] != 'd')
-    i++;
-  if (flags[i] == 0)
-    case_no_flags(flags, &list, *directory);
-  i = 0;
-  while (flags[i] != 0)
-    {
-      if (flags[i] == 'd')
-	case_d(flags, directory, &list);
-      i++;
-    }
-  i = 0;
-  while (flags[i] != 0)
-    {
-      if (flags[i] == 'l')
-	case_l(flags, directory, &list);
-      i++;
-    }
-  return (0);
-}
-
-void    my_show_hidden_list(t_file *list, t_length *length, char *flag)
+void	my_show_hidden_list(t_file *list, t_length *length, char *flag)
 {
   int   max;
 
@@ -77,7 +49,7 @@ void    my_show_hidden_list(t_file *list, t_length *length, char *flag)
     }
 }
 
-void    my_show_list(t_file *list, t_length *length, char *flag)
+void	my_show_list(t_file *list, t_length *length, char *flag)
 {
   int	max;
 
@@ -132,7 +104,7 @@ void	my_show_hidden_name(t_file *list, char *flag)
     }
 }
 
-void    my_show_name(t_file *list, char *flag)
+void	my_show_name(t_file *list, char *flag)
 {
   case_t(flag, &list);
   case_r(flag, &list);

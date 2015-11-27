@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Wed Nov 25 14:14:55 2015 Baptiste veyssiere
-** Last update Fri Nov 27 01:02:23 2015 Baptiste veyssiere
+** Last update Fri Nov 27 15:16:44 2015 Baptiste veyssiere
 */
 
 #include "file_struct.h"
@@ -24,7 +24,7 @@ void	adress(t_file **list, t_directory *directory)
 
 void	file(t_file **list, t_directory *directory)
 {
-  while(directory != NULL)
+  while (directory != NULL)
     {
       if (directory->file)
 	get_file(directory->file, list);

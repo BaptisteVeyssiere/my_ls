@@ -5,13 +5,41 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Mon Nov 23 10:43:56 2015 Baptiste veyssiere
-** Last update Thu Nov 26 18:12:58 2015 Baptiste veyssiere
+** Last update Fri Nov 27 15:19:14 2015 Baptiste veyssiere
 */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include "prototypes.h"
 #include "file_struct.h"
+
+int     displayer(char *flags, t_directory **directory)
+{
+  int           i;
+  t_file        *list;
+
+  i = 0;
+  list = NULL;
+  while (flags[i] != 0 && flags[i] != 'l' && flags[i] != 'R' && flags[i] != 'd')
+    i++;
+  if (flags[i] == 0)
+    case_no_flags(flags, &list, *directory);
+  i = 0;
+  while (flags[i] != 0)
+    {
+      if (flags[i] == 'd')
+        case_d(flags, directory, &list);
+      i++;
+    }
+  i = 0;
+  while (flags[i] != 0)
+    {
+      if (flags[i] == 'l')
+        case_l(flags, directory, &list);
+      i++;
+    }
+  return (0);
+}
 
 void		main(int ac, char **av)
 {

@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Tue Nov 24 14:15:57 2015 Baptiste veyssiere
-** Last update Thu Nov 26 18:15:34 2015 Baptiste veyssiere
+** Last update Fri Nov 27 15:21:32 2015 Baptiste veyssiere
 */
 
 #include <stdlib.h>
@@ -52,7 +52,9 @@ int	if_flags(int *key, char *str, char *flags, int i)
     }
   if (*key == 0 || str[1] == 0)
     {
-      write(2, "Invalid flag\n", 13);
+      write(2, "ls: invalid option -- '", 23);
+      write(2, &str[i], 1);
+      write(2, "'\n", 2);
       exit(1);
     }
   i++;
