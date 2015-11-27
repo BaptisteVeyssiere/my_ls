@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Wed Nov 25 16:30:41 2015 Baptiste veyssiere
-** Last update Fri Nov 27 01:20:49 2015 Baptiste veyssiere
+** Last update Fri Nov 27 11:16:25 2015 Baptiste veyssiere
 */
 
 #include "file_struct.h"
@@ -54,7 +54,11 @@ void	case_l_adress(t_directory *directory, t_file **list, char *flag)
 {
   t_file	*length;
   t_file	*file;
+  int		key;
 
+  key = 0;
+  if (directory->next != NULL)
+    key = 1;
   file = NULL;
   while (directory != NULL)
     {
@@ -69,12 +73,16 @@ void	case_l_adress(t_directory *directory, t_file **list, char *flag)
     }
   while (file != NULL)
     {
-      my_putstr(file->file_name);
-      my_putstr(":\ntotal ");
+      if (key == 1)
+	{
+	  my_putstr(file->file_name);
+	  my_putstr(":\n");
+	}
       get_directory(file->file_name, list);
       my_sort_alpha(list);
       length = malloc(sizeof(*length));
       get_the_lengths(*list, length);
+      my_putstr("total ");
       my_putstr(my_put_nbr(total_block(*list)));
       my_putstr("\n");
       my_show_list(*list, length, flag);
