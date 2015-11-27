@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Tue Nov 24 14:15:57 2015 Baptiste veyssiere
-** Last update Fri Nov 27 15:21:32 2015 Baptiste veyssiere
+** Last update Fri Nov 27 21:51:56 2015 Baptiste veyssiere
 */
 
 #include <stdlib.h>
@@ -61,29 +61,36 @@ int	if_flags(int *key, char *str, char *flags, int i)
   if_flags(key, str, flags, i);
 }
 
-int		if_direct_or_file(int *key, char *str, t_directory **directory, char *flags)
+void		if_file(char *str, t_directory **directory, char *flag)
+{
+  t_directory	*elem;
+  struct stat	buf;
+
+  if (stat(str, &buf) == -1)
+    {
+      write(2, "ls: cannot access ", 18);
+      write(2, str, my_strlen(str));
+      write(2, ": No such file or directory\n", 28);
+      flag[5] = '0';
+    }
+  else
+    {
+      elem = malloc(sizeof(*elem));
+      elem->file = str;
+      elem->next = *directory;
+      *directory = elem;
+    }
+}
+
+int		if_direct_or_file(int *key, char *str, t_directory **directory,
+				  char *flag)
 {
   t_directory	*elem;
   char		*buffer;
   struct stat   buf;
 
   if (opendir(str) == NULL)
-    {
-      if (stat(str, &buf) == -1)
-	{
-	  write(2, "ls: cannot access ", 18);
-	  write(2, str, my_strlen(str));
-	  write(2, ": No such file or directory\n", 28);
-	  flags[5] = '0';
-	}
-      else
-	{
-	  elem = malloc(sizeof(*elem));
-	  elem->file = str;
-	  elem->next = *directory;
-	  *directory = elem;
-	}
-    }
+    if_file(str, directory, flag);
   else
     {
       elem = malloc(sizeof(*elem));
@@ -94,7 +101,8 @@ int		if_direct_or_file(int *key, char *str, t_directory **directory, char *flags
   return (0);
 }
 
-int		flags_and_home_gestion(int ac, char **av, char *flags, t_directory **directory)
+int		flags_and_home_gestion(int ac, char **av, char *flags,
+				       t_directory **directory)
 {
   int		i;
   int		key;

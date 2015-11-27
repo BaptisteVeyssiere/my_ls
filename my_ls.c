@@ -5,15 +5,14 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Mon Nov 23 10:43:56 2015 Baptiste veyssiere
-** Last update Fri Nov 27 15:19:14 2015 Baptiste veyssiere
+** Last update Fri Nov 27 21:58:03 2015 Baptiste veyssiere
 */
 
 #include <unistd.h>
 #include <stdlib.h>
-#include "prototypes.h"
 #include "file_struct.h"
 
-int     displayer(char *flags, t_directory **directory)
+int	displayer(char *flags, t_directory **directory)
 {
   int           i;
   t_file        *list;

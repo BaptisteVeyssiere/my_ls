@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Wed Nov 25 16:30:41 2015 Baptiste veyssiere
-** Last update Fri Nov 27 11:16:25 2015 Baptiste veyssiere
+** Last update Fri Nov 27 21:25:32 2015 Baptiste veyssiere
 */
 
 #include "file_struct.h"
@@ -50,6 +50,34 @@ void	add_adress(t_file **file, char *str)
   *file = elem;
 }
 
+void	case_l_displayer(t_file **list, int key, t_file **file, char *flag)
+{
+  t_file	*length;
+
+  while (file != NULL)
+    {
+      if (key == 1)
+        {
+          my_putstr((*file)->file_name);
+          my_putstr(":\n");
+        }
+      get_directory((*file)->file_name, list);
+      my_sort_alpha(list);
+      length = malloc(sizeof(*length));
+      get_the_lengths(*list, length);
+      my_putstr("total ");
+      my_putstr(my_put_nbr(total_block(*list)));
+      my_putstr("\n");
+      my_show_list(*list, length, flag);
+      if ((*file)->next != NULL)
+        my_putstr("\n");
+      free(length);
+      while (*list != NULL)
+        *list = (*list)->next;
+      *file = (*file)->next;
+    }
+}
+
 void	case_l_adress(t_directory *directory, t_file **list, char *flag)
 {
   t_file	*length;
@@ -71,28 +99,7 @@ void	case_l_adress(t_directory *directory, t_file **list, char *flag)
       my_sort_alpha(&file);
       case_r(&file, flag);
     }
-  while (file != NULL)
-    {
-      if (key == 1)
-	{
-	  my_putstr(file->file_name);
-	  my_putstr(":\n");
-	}
-      get_directory(file->file_name, list);
-      my_sort_alpha(list);
-      length = malloc(sizeof(*length));
-      get_the_lengths(*list, length);
-      my_putstr("total ");
-      my_putstr(my_put_nbr(total_block(*list)));
-      my_putstr("\n");
-      my_show_list(*list, length, flag);
-      if (file->next != NULL)
-	my_putstr("\n");
-      free(length);
-      while (*list != NULL)
-	*list = (*list)->next;
-      file = file->next;
-    }
+  case_l_displayer(list, key, &file, flag);
 }
 
 int	case_l(char *flag, t_directory **directory, t_file **list)

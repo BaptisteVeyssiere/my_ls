@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Thu Nov 26 02:26:42 2015 Baptiste veyssiere
-** Last update Thu Nov 26 16:25:24 2015 Baptiste veyssiere
+** Last update Fri Nov 27 21:53:19 2015 Baptiste veyssiere
 */
 
 #include "file_struct.h"
@@ -48,7 +48,7 @@ void	name_assembler(char *str, char *name, char *assemblage)
   assemblage[i] = 0;
 }
 
-void    permissions(struct stat buf, t_file *file)
+void	permissions(struct stat buf, t_file *file)
 {
   file->rights[0] = ((S_ISDIR(buf.st_mode)) ? 'd' : '-');
   file->rights[1] = ((buf.st_mode & S_IRUSR) ? 'r' : '-');
@@ -63,7 +63,7 @@ void    permissions(struct stat buf, t_file *file)
   file->rights[10] = 0;
 }
 
-void    date(t_file *file, struct stat buf)
+void	date(t_file *file, struct stat buf)
 {
   file->date = malloc(my_strlen(ctime(&buf.st_mtime)));
   my_strcpy(file->date, ctime(&buf.st_mtime));
@@ -71,7 +71,7 @@ void    date(t_file *file, struct stat buf)
   file->date[12] = 0;
 }
 
-void    my_put_name(t_file *file, struct dirent *pathname)
+void	my_put_name(t_file *file, struct dirent *pathname)
 {
   int   i;
 

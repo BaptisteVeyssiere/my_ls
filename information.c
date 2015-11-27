@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Wed Nov 25 15:37:16 2015 Baptiste veyssiere
-** Last update Thu Nov 26 17:38:50 2015 Baptiste veyssiere
+** Last update Fri Nov 27 21:53:51 2015 Baptiste veyssiere
 */
 
 #include <stdlib.h>
@@ -41,7 +41,7 @@ void		get_file(char *str, t_file **list)
   *list = file;
 }
 
-void            get_file_directory(char *str, t_file **list, char *name)
+void		get_file_directory(char *str, t_file **list, char *name)
 {
   struct stat   buf;
   struct passwd *uid;

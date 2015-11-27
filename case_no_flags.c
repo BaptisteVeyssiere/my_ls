@@ -5,13 +5,13 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Thu Nov 26 16:31:22 2015 Baptiste veyssiere
-** Last update Fri Nov 27 11:19:03 2015 Baptiste veyssiere
+** Last update Fri Nov 27 21:32:48 2015 Baptiste veyssiere
 */
 
 #include <stdlib.h>
 #include "file_struct.h"
 
-void    case_file(t_directory *directory, char *flag)
+void	case_file(t_directory *directory, char *flag)
 {
   t_file        *file;
   int           key;
@@ -35,7 +35,27 @@ void    case_file(t_directory *directory, char *flag)
     }
 }
 
-void    case_adress(t_directory *directory, t_file **list, char *flag)
+void	case_no_flag_displayer(t_file **file, t_file **list, char *flag, int key)
+{
+  while (*file != NULL)
+    {
+      if (key == 1)
+        {
+          my_putstr((*file)->file_name);
+          my_putstr(":\n");
+        }
+      get_directory((*file)->file_name, list);
+      my_sort_alpha(list);
+      my_show_name(*list, flag);
+      if ((*file)->next != NULL)
+        my_putstr("\n");
+      while (*list != NULL)
+        *list = (*list)->next;
+      *file = (*file)->next;
+    }
+}
+
+void	case_adress(t_directory *directory, t_file **list, char *flag)
 {
   t_file        *file;
   int		key;
@@ -52,22 +72,7 @@ void    case_adress(t_directory *directory, t_file **list, char *flag)
     }
   if (file != NULL)
     my_sort_alpha(&file);
-  while (file != NULL)
-    {
-      if (key == 1)
-	{
-	  my_putstr(file->file_name);
-	  my_putstr(":\n");
-	}
-      get_directory(file->file_name, list);
-      my_sort_alpha(list);
-      my_show_name(*list, flag);
-      if (file->next != NULL)
-        my_putstr("\n");
-      while (*list != NULL)
-        *list = (*list)->next;
-      file = file->next;
-    }
+  case_no_flag_displayer(&file, list, flag, key);
 }
 
 void	case_no_flags(char *flag, t_file **list, t_directory *directory)

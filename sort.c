@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Tue Nov 24 17:43:25 2015 Baptiste veyssiere
-** Last update Thu Nov 26 17:23:51 2015 Baptiste veyssiere
+** Last update Fri Nov 27 21:56:07 2015 Baptiste veyssiere
 */
 
 #include "file_struct.h"
@@ -24,7 +24,8 @@ void	get_the_lengths(t_file *list, t_length *lengths)
   list = list->next;
   while (list != NULL)
     {
-      lengths->hardlink = LENGTH(lengths->hardlink, my_strlen(my_put_nbr(list->hardlink)));
+      lengths->hardlink =
+	LENGTH(lengths->hardlink, my_strlen(my_put_nbr(list->hardlink)));
       lengths->size = LENGTH(lengths->size, my_strlen(my_put_nbr(list->size)));
       lengths->user = LENGTH(lengths->user, my_strlen(list->user_name));
       lengths->group = LENGTH(lengths->group, my_strlen(list->group_name));
@@ -32,17 +33,13 @@ void	get_the_lengths(t_file *list, t_length *lengths)
     }
 }
 
-int     check(t_file *list)
+int	check(t_file *list)
 {
   int	i;
 
   i = 0;
   while (list->file_name[i] != 0)
     {
-      /*if (list->file_name[i] <= 'Z' && list->file_name[i] >= 'A')
-	if (list->next->file_name[i] <= 'z' && list->next->file_name[i] >= 'a')
-	  if ((list->file_name[i] + 32) > list->next->file_name[i])
-	  return (1);*/
       if (list->file_name[i] > list->next->file_name[i])
 	return (1);
       if (list->file_name[i] < list->next->file_name[i])
