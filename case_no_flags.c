@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Thu Nov 26 16:31:22 2015 Baptiste veyssiere
-** Last update Thu Nov 26 19:33:54 2015 Baptiste veyssiere
+** Last update Fri Nov 27 00:58:44 2015 Baptiste veyssiere
 */
 
 #include <stdlib.h>
@@ -29,7 +29,7 @@ void    case_file(t_directory *directory, char *flag)
   if (file != NULL)
     {
       my_sort_alpha(&file);
-      my_show_hidden_name(file);
+      my_show_hidden_name(file, flag);
       if (key == 1)
 	my_putstr("\n");
     }
@@ -54,7 +54,7 @@ void    case_adress(t_directory *directory, t_file **list, char *flag)
       my_putstr(":\n");
       get_directory(file->file_name, list);
       my_sort_alpha(list);
-      my_show_name(*list);
+      my_show_name(*list, flag);
       if (file->next != NULL)
         my_putstr("\n");
       while (*list != NULL)
@@ -72,7 +72,7 @@ void	case_no_flags(char *flag, t_file **list, t_directory *directory)
       get_directory(".", list);
       my_sort_alpha(list);
       case_r(flag, list);
-      my_show_name(*list);
+      my_show_name(*list, flag);
     }
   else if (directory != NULL)
     {

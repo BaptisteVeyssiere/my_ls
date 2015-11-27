@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Thu Nov 26 01:31:48 2015 Baptiste veyssiere
-** Last update Thu Nov 26 17:34:09 2015 Baptiste veyssiere
+** Last update Fri Nov 27 01:06:27 2015 Baptiste veyssiere
 */
 
 #include <stdlib.h>
@@ -36,10 +36,12 @@ int             displayer(char *flags, t_directory **directory)
   return (0);
 }
 
-void    my_show_hidden_list(t_file *list, t_length *length)
+void    my_show_hidden_list(t_file *list, t_length *length, char *flag)
 {
   int   max;
 
+  case_t(flag, &list);
+  case_r(flag, &list);
   while (list != NULL)
     {
       my_putstr(list->rights);
@@ -72,10 +74,12 @@ void    my_show_hidden_list(t_file *list, t_length *length)
     }
 }
 
-void    my_show_list(t_file *list, t_length *length)
+void    my_show_list(t_file *list, t_length *length, char *flag)
 {
   int	max;
 
+  case_t(flag, &list);
+  case_r(flag, &list);
   while (list != NULL)
     {
       if (list->file_name[0] == '.')
@@ -113,8 +117,10 @@ void    my_show_list(t_file *list, t_length *length)
     }
 }
 
-void	my_show_hidden_name(t_file *list)
+void	my_show_hidden_name(t_file *list, char *flag)
 {
+  case_t(flag, &list);
+  case_r(flag, &list);
   while (list != NULL)
     {
       my_putstr(list->file_name);
@@ -123,8 +129,10 @@ void	my_show_hidden_name(t_file *list)
     }
 }
 
-void    my_show_name(t_file *list)
+void    my_show_name(t_file *list, char *flag)
 {
+  case_t(flag, &list);
+  case_r(flag, &list);
   while (list != NULL)
     {
       if (list->file_name[0] != '.')

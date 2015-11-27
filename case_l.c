@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Wed Nov 25 16:30:41 2015 Baptiste veyssiere
-** Last update Thu Nov 26 19:39:13 2015 Baptiste veyssiere
+** Last update Fri Nov 27 01:20:49 2015 Baptiste veyssiere
 */
 
 #include "file_struct.h"
@@ -33,7 +33,7 @@ void	case_l_file(t_directory *directory, char *flag)
       my_sort_alpha(&file);
       length = malloc(sizeof(*length));
       get_the_lengths(file, length);
-      my_show_hidden_list(file, length);
+      my_show_hidden_list(file, length, flag);
       if (key == 1)
 	my_putstr("\n");
     }
@@ -63,7 +63,10 @@ void	case_l_adress(t_directory *directory, t_file **list, char *flag)
       directory = directory->next;
     }
   if (file != NULL)
-    my_sort_alpha(&file);
+    {
+      my_sort_alpha(&file);
+      case_r(&file, flag);
+    }
   while (file != NULL)
     {
       my_putstr(file->file_name);
@@ -74,7 +77,7 @@ void	case_l_adress(t_directory *directory, t_file **list, char *flag)
       get_the_lengths(*list, length);
       my_putstr(my_put_nbr(total_block(*list)));
       my_putstr("\n");
-      my_show_list(*list, length);
+      my_show_list(*list, length, flag);
       if (file->next != NULL)
 	my_putstr("\n");
       free(length);
@@ -84,11 +87,11 @@ void	case_l_adress(t_directory *directory, t_file **list, char *flag)
     }
 }
 
-int	case_l(char *flags, t_directory **directory, t_file **list)
+int	case_l(char *flag, t_directory **directory, t_file **list)
 {
   t_length	*length;
 
-  if (*directory == NULL && flags[5] != '0')
+  if (*directory == NULL && flag[5] != '0')
     {
       get_directory(".", list);
       my_sort_alpha(list);
@@ -97,12 +100,12 @@ int	case_l(char *flags, t_directory **directory, t_file **list)
       my_putstr("total ");
       my_putstr(my_put_nbr(total_block(*list)));
       my_putstr("\n");
-      my_show_list(*list, length);
+      my_show_list(*list, length, flag);
     }
   else
     {
-      case_l_file(*directory, flags);
-      case_l_adress(*directory, list, flags);
+      case_l_file(*directory, flag);
+      case_l_adress(*directory, list, flag);
     }
   exit (0);
 }

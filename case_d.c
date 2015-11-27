@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Wed Nov 25 14:14:55 2015 Baptiste veyssiere
-** Last update Thu Nov 26 19:20:22 2015 Baptiste veyssiere
+** Last update Fri Nov 27 01:02:23 2015 Baptiste veyssiere
 */
 
 #include "file_struct.h"
@@ -32,7 +32,7 @@ void	file(t_file **list, t_directory *directory)
     }
 }
 
-void	case_ld(char *flags, t_directory **directory, t_file **list)
+void	case_ld(char *flag, t_directory **directory, t_file **list)
 {
   t_length	*length;
 
@@ -41,7 +41,7 @@ void	case_ld(char *flags, t_directory **directory, t_file **list)
       get_file(".", list);
       length = malloc(sizeof(*length));
       get_the_lengths(*list, length);
-      my_show_hidden_list(*list, length);
+      my_show_hidden_list(*list, length, flag);
     }
   else
     {
@@ -50,7 +50,7 @@ void	case_ld(char *flags, t_directory **directory, t_file **list)
       length = malloc(sizeof(*length));
       get_the_lengths(*list, length);
       my_sort_alpha(list);
-      my_show_hidden_list(*list, length);
+      my_show_hidden_list(*list, length, flag);
       free(length);
     }
 }
@@ -74,21 +74,21 @@ void	dname_filler(t_file **list, t_directory *directory)
   *list = elem;
 }
 
-int	case_d(char *flags, t_directory **directory, t_file **list)
+int	case_d(char *flag, t_directory **directory, t_file **list)
 {
   int	i;
 
   i = 0;
-  while (flags[i] != 0)
+  while (flag[i] != 0)
     {
-      if (flags[i] == 'l')
+      if (flag[i] == 'l')
 	{
-	  case_ld(flags, directory, list);
+	  case_ld(flag, directory, list);
 	  exit(0);
 	}
       i++;
     }
-  if (*directory == NULL && flags[5] != '0')
+  if (*directory == NULL && flag[5] != '0')
     my_putstr(".\n");
   else if (*directory != NULL)
     {
@@ -98,7 +98,7 @@ int	case_d(char *flags, t_directory **directory, t_file **list)
 	  *directory = (*directory)->next;
 	}
       my_sort_alpha(list);
-      my_show_hidden_name(*list);
+      my_show_hidden_name(*list, flag);
     }
   exit(0);
 }
