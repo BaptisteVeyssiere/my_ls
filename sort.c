@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Tue Nov 24 17:43:25 2015 Baptiste veyssiere
-** Last update Fri Nov 27 21:56:07 2015 Baptiste veyssiere
+** Last update Sat Nov 28 15:18:42 2015 Baptiste veyssiere
 */
 
 #include "file_struct.h"
@@ -15,7 +15,7 @@
 
 #include <stdio.h>
 
-void	get_the_lengths(t_file *list, t_length *lengths)
+get_the_lengths(t_file *list, t_length *lengths)
 {
   lengths->hardlink = my_strlen(my_put_nbr(list->hardlink));
   lengths->size = my_strlen(my_put_nbr(list->size));
