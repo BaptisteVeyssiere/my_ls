@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Thu Nov 26 02:26:42 2015 Baptiste veyssiere
-** Last update Fri Nov 27 21:53:19 2015 Baptiste veyssiere
+** Last update Sat Nov 28 11:36:05 2015 Baptiste veyssiere
 */
 
 #include "file_struct.h"
@@ -60,7 +60,8 @@ void	permissions(struct stat buf, t_file *file)
   file->rights[7] = ((buf.st_mode & S_IROTH) ? 'r' : '-');
   file->rights[8] = ((buf.st_mode & S_IWOTH) ? 'w' : '-');
   file->rights[9] = ((buf.st_mode & S_IXOTH) ? 'x' : '-');
-  file->rights[10] = 0;
+  file->rights[10] = ((buf.st_mode & S_ISVTX) ? 't' : 0);
+  file->rights[11] = 0;
 }
 
 void	date(t_file *file, struct stat buf)

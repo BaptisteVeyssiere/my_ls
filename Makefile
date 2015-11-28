@@ -5,7 +5,7 @@
 ## Login   <VEYSSI_B@epitech.net>
 ##
 ## Started on  Mon Nov 23 10:38:43 2015 Baptiste veyssiere
-## Last update Thu Nov 26 17:44:44 2015 Baptiste veyssiere
+## Last update Fri Nov 27 22:05:48 2015 Baptiste veyssiere
 ##
 
 NAME	= my_ls
@@ -21,6 +21,7 @@ SRCS	= my_ls.c \
 	case_d.c \
 	case_l.c \
 	case_r_and_t.c \
+	case_recursive.c \
 	case_no_flags.c \
 	information.c \
 	displayer.c \

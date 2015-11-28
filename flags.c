@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Tue Nov 24 14:15:57 2015 Baptiste veyssiere
-** Last update Fri Nov 27 21:51:56 2015 Baptiste veyssiere
+** Last update Fri Nov 27 22:03:34 2015 Baptiste veyssiere
 */
 
 #include <stdlib.h>
@@ -52,7 +52,7 @@ int	if_flags(int *key, char *str, char *flags, int i)
     }
   if (*key == 0 || str[1] == 0)
     {
-      write(2, "ls: invalid option -- '", 23);
+      write(2, "my_ls: invalid option -- '", 26);
       write(2, &str[i], 1);
       write(2, "'\n", 2);
       exit(1);
@@ -68,7 +68,7 @@ void		if_file(char *str, t_directory **directory, char *flag)
 
   if (stat(str, &buf) == -1)
     {
-      write(2, "ls: cannot access ", 18);
+      write(2, "my_ls: cannot access ", 21);
       write(2, str, my_strlen(str));
       write(2, ": No such file or directory\n", 28);
       flag[5] = '0';
@@ -111,7 +111,7 @@ int		flags_and_home_gestion(int ac, char **av, char *flags,
   while (i < ac)
     {
       key = 0;
-      if (av[i][0] == '-')
+      if (av[i][0] == '-' && av[i][1] != 0)
 	if_flags(&key, av[i], flags, 1);
       else
 	if_direct_or_file(&key, av[i], directory, flags);

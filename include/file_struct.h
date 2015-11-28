@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Mon Nov 23 15:25:25 2015 Baptiste veyssiere
-** Last update Thu Nov 26 18:01:36 2015 Baptiste veyssiere
+** Last update Sat Nov 28 11:36:39 2015 Baptiste veyssiere
 */
 
 #ifndef FILE_STRUCT_H
@@ -13,7 +13,7 @@
 
 typedef struct s_file
 {
-  char  rights[11];
+  char  rights[12];
   int   hardlink;
   int   size;
   char  *date;
