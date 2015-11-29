@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Thu Nov 26 17:44:27 2015 Baptiste veyssiere
-** Last update Fri Nov 27 21:44:21 2015 Baptiste veyssiere
+** Last update Sun Nov 29 16:54:50 2015 Baptiste veyssiere
 */
 
 #include "file_struct.h"
@@ -18,9 +18,9 @@ int	check_t(t_file *list)
   i = 0;
   while (list->file_name[i] != 0)
     {
-      if (list->time > list->next->time)
-        return (1);
       if (list->time < list->next->time)
+        return (1);
+      if (list->time > list->next->time)
         return (0);
       i++;
     }
