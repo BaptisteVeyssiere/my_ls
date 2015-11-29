@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Mon Nov 23 10:43:56 2015 Baptiste veyssiere
-** Last update Sun Nov 29 15:52:21 2015 Baptiste veyssiere
+** Last update Sun Nov 29 16:05:52 2015 Baptiste veyssiere
 */
 
 #include <unistd.h>
@@ -55,7 +55,7 @@ int	displayer(char *flags, t_directory **directory)
   while (flags[i] != 0)
     if (flags[i++] == 'l')
       case_l(flags, directory, &list);
-  free_function(list);
+  //free_function(list);
   exit(0);
 }
 

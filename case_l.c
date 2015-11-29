@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Wed Nov 25 16:30:41 2015 Baptiste veyssiere
-** Last update Fri Nov 27 21:25:32 2015 Baptiste veyssiere
+** Last update Sun Nov 29 16:05:23 2015 Baptiste veyssiere
 */
 
 #include "file_struct.h"
@@ -54,7 +54,7 @@ void	case_l_displayer(t_file **list, int key, t_file **file, char *flag)
 {
   t_file	*length;
 
-  while (file != NULL)
+  while (*file != NULL)
     {
       if (key == 1)
         {
