@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Fri Nov 27 22:04:49 2015 Baptiste veyssiere
-** Last update Sun Nov 29 14:52:16 2015 Baptiste veyssiere
+** Last update Sun Nov 29 14:59:15 2015 Baptiste veyssiere
 */
 
 #include "file_struct.h"
@@ -36,35 +36,18 @@ void	recursive_directory(t_file *list, t_file **buffer)
 
 void		recursivity(char *flag, t_file **list)
 {
-  int		i;
-  int		key;
   t_file	*buffer;
   t_file	*file;
-  t_length	length;
 
-  i = 0;
-  key = 0;
   buffer = NULL;
   file = NULL;
-  while(flag[i] != 0)
-    {
-      if (flag[i] == 'l')
-	key = 1;
-      i++;
-    }
   while (*list != NULL)
     {
       get_directory((*list)->file_name, &file);
       recursive_directory(file, &buffer);
       my_putstr((*list)->file_name);
       my_putstr(":\n");
-      if (key == 1)
-	{
-	  get_the_lengths(file, &length);
-	  my_show_list(file, &length, flag);
-	}
-      else
-	my_show_name(file, flag);
+      my_show_name(file, flag);
       if ((*list)->next != NULL && buffer == NULL)
 	my_putstr("\n");
       recursivity(flag, &buffer);
@@ -75,8 +58,6 @@ void		recursivity(char *flag, t_file **list)
 void	case_rec_dot(char *flag, t_file **list)
 {
   t_file	*buffer;
-  int		i;
-  t_length	length;
 
   buffer = NULL;
   get_directory(".", list);
