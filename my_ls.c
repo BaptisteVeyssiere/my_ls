@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Mon Nov 23 10:43:56 2015 Baptiste veyssiere
-** Last update Sun Nov 29 16:05:52 2015 Baptiste veyssiere
+** Last update Sun Nov 29 20:02:43 2015 Baptiste veyssiere
 */
 
 #include <unistd.h>
@@ -39,10 +39,6 @@ int	displayer(char *flags, t_directory **directory)
 
   i = 0;
   list = NULL;
-  while (flags[i] != 0)
-    if (flags[i++] == 'R')
-      case_recursive(flags, directory, &list);
-  i = 0;
   while (flags[i] != 0 && flags[i] != 'l' && flags[i] != 'R' && flags[i] != 'd')
     i++;
   if (flags[i] == 0)
@@ -53,9 +49,13 @@ int	displayer(char *flags, t_directory **directory)
       case_d(flags, directory, &list);
   i = 0;
   while (flags[i] != 0)
+    if (flags[i++] == 'R')
+      case_recursive(flags, directory, &list);
+  i = 0;
+  while (flags[i] != 0)
     if (flags[i++] == 'l')
       case_l(flags, directory, &list);
-  //free_function(list);
+  free_function(list);
   exit(0);
 }
 
