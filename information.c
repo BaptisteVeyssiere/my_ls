@@ -5,7 +5,7 @@
 ** Login   <VEYSSI_B@epitech.net>
 **
 ** Started on  Wed Nov 25 15:37:16 2015 Baptiste veyssiere
-** Last update Sun Nov 29 14:47:20 2015 Baptiste veyssiere
+** Last update Sun Nov 29 15:53:48 2015 Baptiste veyssiere
 */
 
 #include <stdlib.h>
@@ -81,6 +81,8 @@ void		get_directory(char *str, t_file **list)
       assemblage = malloc(my_strlen(str) + my_strlen(name));
       name_assembler(str, name, assemblage);
       get_file_directory(assemblage, list, name);
+      free(name);
+      free(assemblage);
     }
   closedir(dir);
 }
